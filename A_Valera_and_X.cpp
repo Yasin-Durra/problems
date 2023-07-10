@@ -29,25 +29,36 @@ using namespace std;
 const ll N = 500010, M = 2100, Mod = 998244353;
 void solve()
 {
-    bool b = true;
     string s[301];
-    char c1,c2;
-    set<char>st;
+    char c1, c2;
+    set<char> st1, st2;
     Test
     {
-        cin >>s[T];
+        cin >> s[T];
     }
-    c1=s[0][0];
-    c2=s[0][1];
+    c1 = s[0][0];
+    c2 = s[0][1];
     for (int i = 0; i < TT; i++)
-    {   
+    {
         for (int j = 0; j < TT; j++)
         {
+            if (i == j || (TT - i) -1 == j)
+            {
+                st1.insert(s[i][j]);
+            }
+            else
+            {
+                st2.insert(s[i][j]);
+            }
             
         }
     }
-    if(b)cout<<"YES";
-    else cout<<"NO";
+    
+    bool ok = st1.sz==1&&st2.sz==1&&c1!=c2;
+    if (ok)
+        cout << "YES";
+    else
+        cout << "NO";
 }
 int main()
 {

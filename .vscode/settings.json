@@ -1,7 +1,8 @@
 {
     "files.associations": {
+        "ostream": "cpp",
+        "bitset": "cpp",
         "iostream": "cpp",
-        "cstdlib": "cpp",
         "*.tcc": "cpp",
         "cctype": "cpp",
         "clocale": "cpp",
@@ -12,6 +13,7 @@
         "cstdarg": "cpp",
         "cstddef": "cpp",
         "cstdio": "cpp",
+        "cstdlib": "cpp",
         "cstring": "cpp",
         "ctime": "cpp",
         "cwchar": "cpp",
@@ -24,7 +26,6 @@
         "limits": "cpp",
         "memory": "cpp",
         "new": "cpp",
-        "ostream": "cpp",
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
@@ -32,7 +33,6 @@
         "valarray": "cpp",
         "array": "cpp",
         "atomic": "cpp",
-        "bitset": "cpp",
         "cfenv": "cpp",
         "chrono": "cpp",
         "cinttypes": "cpp",
@@ -68,6 +68,5 @@
         "shared_mutex": "cpp",
         "thread": "cpp",
         "typeindex": "cpp"
-    },
-    "C_Cpp.errorSquiggles": "Disabled"
+    }
 }

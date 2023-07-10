@@ -1,0 +1,1 @@
+{"name":"Local: 7","url":"c:\\Users\\Yasin Durra\\Documents\\Cpp\\7.cpp","tests":[{"id":1684594829561,"input":"III","output":"3"},{"id":1684594846918,"input":"LVIII","output":"58"},{"id":1684594879902,"input":"MCMXCIV","output":"1994"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Yasin Durra\\Documents\\Cpp\\7.cpp","group":"local","local":true}

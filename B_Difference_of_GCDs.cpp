@@ -6,59 +6,72 @@
 #define fr first
 #define sc second
 #define ever (;;)
-#define pii pair<int,int>
-#define pll pair<ll,ll>
-#define SPEED ios::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+#define pii pair<int, int>
+#define pll pair<ll, ll>
+#define SPEED                \
+    ios::sync_with_stdio(0); \
+    cin.tie(0);              \
+    cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':'<<' ' << a << '\n'
-#define dbga(a) for(auto x:a) cout << x << ' '; cout << endl;
-#define all(x) x.begin(),x.end()
+#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbga(a)           \
+    for (auto x : a)      \
+        cout << x << ' '; \
+    cout << endl;
+#define forin(i, n, a)          \
+    for (int j = i; j < n; j++) \
+        cin >> a[j];
+#define all(x) x.begin(), x.end()
 #define OO 1e18
 #define PI 3.14159265358979323846
+#define MM 1000000007
+#define FO(name) freopen(name, "r", stdin);
 #define R return
-#define Test int TT;cin>>TT;for(int T=1;T<=TT;T++)
-#define unq(vec) vec.resize(distance(vec.begin(),unique(all(vec))));
-#define line cout<<"______________________"<<endl;
-#define yes cout<<"YES"<<endl;
-#define no cout<<"NO"<<endl;
-#define clr(m,val) memset(m,val,sizeof m)
-#define fixTo(x , y) cout<< fixed << setprecision(y) << x 
+#define Test   \
+    int TT;    \
+    cin >> TT; \
+    for (int T = 1; T <= TT; T++)
+#define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
+#define line cout << "______________________" << endl;
+#define nl << "\n"
+#define yes cout << "YES" << endl;
+#define no cout << "NO" << endl;
+#define clr(m, val) memset(m, val, sizeof m)
+#define fixTo(x, y) cout << fixed << setprecision(y) << x
 
 using namespace std;
-const ll N = 500010,M = 2100,Mod = 998244353;
+const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
+int dx[] = {1, -1, 0, 0};
+int dy[] = {0, 0, 1, -1};
 
-void solve() {
-Test{
-    int n,l,r,p;
-    set<int>st;
-    vector<int>v;
-    cin>>n>>l>>r;
+void solve()
+{
+    ll n, l, r, cnt;
+    cin >> n >> l >> r;
+    vector<ll> ans;
     for (int i = 1; i <= n; i++)
     {
-        for (int j = l/i; i*j <= r; j++)
-        { 
-            if((i*j>=l&&i*j<=r)&&(i*j)%i==0){
-                p=st.sz;
-                st.insert(i*j);
-                if (p!=st.sz)
-                {
-                    v.pb(i*j);
-                    break;
-                }
-                
-            }
+        cnt = ceill(l*1.0 / i * 1.0) * i;
+        if (cnt > r)
+        {
+            no
+                R;
         }
-        
+        else
+        {
+            ans.pb(cnt);
+        }
     }
-    if(st.sz==n){
-        yes
-        dbga(v);
-    }else no
+    yes for (int i = 0; i < ans.sz; i++)
+    {
+        cout << ans[i] << " ";
+    }
+    cout nl;
 }
-}
-int main ()
+int main()
 {
-SPEED;
-solve();
-R 0;
+    SPEED;
+    Test
+    solve();
+    R 0;
 }

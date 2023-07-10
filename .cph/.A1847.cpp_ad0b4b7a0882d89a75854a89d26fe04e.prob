@@ -1,0 +1,1 @@
+{"name":"Local: A1847","url":"c:\\Users\\Yasin Durra\\Documents\\Cpp\\A1847.cpp","tests":[{"id":1688655018415,"input":"3\n4 2\n1 3 5 2\n6 3\n1 9 12 4 7 2\n12 8\n1 9 8 2 3 3 1 8 7 7 9 2\n","output":"4\n11\n2\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Yasin Durra\\Documents\\Cpp\\A1847.cpp","group":"local","local":true}
