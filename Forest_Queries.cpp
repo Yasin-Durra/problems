@@ -13,7 +13,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,31 +33,56 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
+#define btwn(v, a, b) (v <= b && v >= a)
 #define fixTo(x, y) cout << fixed << setprecision(y) << x
 
 using namespace std;
 const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
+int dxx[] = {1, -1, 0, 0, -1, 1, -1, 1};
+int dyy[] = {0, 0, 1, -1, -1, 1, 1, -1};
 
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    ll n, q;
+    cin >> n >> q;
+    vector<vector<ll>> v(n + 1, vector<ll>(n + 1, 0));
+    char g[n + 1][n + 1];
+    for (int i = 1; i <= n; i++)
     {
-        swap(a, b);
+        for (int j = 1; j <= n; j++)
+        {
+            cin >> g[i][j];
+        }
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n; j++)
+        {
+            v[i][j] = v[i][j - 1] + v[i - 1][j] - v[i - 1][j - 1] + (g[i][j] == '*');
+        }
+        // dbga(v[i]);
+    }
+    while (q--)
+    {
+        int from_row, to_row, from_col, to_col;
+        cin >> from_row >> from_col >> to_row >> to_col;
+        cout << v[to_row][to_col] 
+               -v[from_row - 1][to_col] 
+               -v[to_row][from_col - 1] 
+               +v[from_row - 1][from_col - 1]
+             << '\n';
+    }
 }
 int main()
 {
     SPEED;
-    Test
+    // Test
     solve();
     R 0;
 }

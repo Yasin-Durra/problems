@@ -13,7 +13,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,31 +33,44 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
+#define btwn(v, a, b) (v <= b && v >= a)
 #define fixTo(x, y) cout << fixed << setprecision(y) << x
 
 using namespace std;
 const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
+int dxx[] = {1, -1, 0, 0, -1, 1, -1, 1};
+int dyy[] = {0, 0, 1, -1, -1, 1, 1, -1};
 
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    ll n, l, r;
+    cin >> n;
+    map<ll, ll> mp;
+    while (n--)
     {
-        swap(a, b);
+        cin >> l >> r;
+        mp[l]++;
+        mp[r]--;
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    ll mx = 0;
+    ll cnt = 0;
+    for (auto it : mp)
+    {
+        cnt += it.sc;
+        mx=max(mx,cnt);
+    }
+    cout<<mx;
 }
 int main()
 {
     SPEED;
-    Test
+    // Test
     solve();
     R 0;
 }

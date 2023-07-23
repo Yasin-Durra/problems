@@ -33,6 +33,7 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
@@ -42,22 +43,59 @@ using namespace std;
 const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
-
+vector<int> adj[N];
+bitset<N> vis;
+bool dfs(int x, int par, int &cnt)
+{
+    if (vis[x])
+    {
+        R 1;
+    }
+    vis[x] = 1;
+    bool ok = 0;
+    for (int i : adj[x])
+    {
+        if (i != par)
+        {
+            cnt++;
+            if (dfs(i, x, cnt))
+                R 1;
+        }
+    }
+    R ok;
+}
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    ll n, m, u,t, v;
+    cin >> n >>t>> m;
+    for (int i = 0; i < m; i++)
     {
-        swap(a, b);
+        cin >> u >> v;
+        u--, v--;
+        adj[u].pb(v);
+        adj[v].pb(u);
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    ll ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        int cnt = 0;
+        if (!vis[i])
+        {
+            if (dfs(i,-1 , cnt))
+            {
+                // deb(cnt);
+                if ((cnt) % 2 == 1 && (cnt) != 1)
+                {
+                    ans++;
+                }
+            }
+        }
+    }
+    cout << ans;
 }
 int main()
 {
     SPEED;
-    Test
     solve();
     R 0;
 }

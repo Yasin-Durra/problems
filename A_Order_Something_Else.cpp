@@ -13,7 +13,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,6 +33,7 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
@@ -45,19 +46,24 @@ int dy[] = {0, 0, 1, -1};
 
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    ll n, p, q;
+    cin >> n >> p >> q;
+    ll a[n];
+    forin(0, n, a);
+    sort(a, a + n);
+    if (a[0] + q>=p)
     {
-        swap(a, b);
+        cout << p nl;
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    else
+    {
+        cout << a[0] +  q;
+    }
 }
 int main()
 {
     SPEED;
-    Test
+    // Test
     solve();
     R 0;
 }

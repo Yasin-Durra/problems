@@ -13,7 +13,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,26 +33,49 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
+#define btwn(v, a, b) (v <= b && v >= a)
 #define fixTo(x, y) cout << fixed << setprecision(y) << x
 
 using namespace std;
 const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
-
+int dxx[] = {1, -1, 0, 0, -1, 1, -1, 1};
+int dyy[] = {0, 0, 1, -1, -1, 1, 1, -1};
+double dis(ll x, ll y)
+{
+    R sqrt(x * x + y * y);
+}
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    ll H, W, x1, y1, x2, y2, w, h;
+    cin >> W >> H >> x1 >> y1 >> x2 >> y2 >> w >> h;
+    ll x3 = x2, y3 = y1, x4 = x1, y4 = y2;
+    ll ans1 = OO;
+
+    if (h + (y2 - y1) <= H)
     {
-        swap(a, b);
+        ans1 = min(ans1, (h - y1)<0?0:(h - y1));
+        ans1 = min(ans1, h - (H - y2) < 0 ? 0 : h - (H - y2));
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    if (w + (x2 - x1) <= W)
+    {
+        ans1 = min(ans1, (w - x1)<0?0:(w - x1));
+        ans1 = min(ans1, w - (W - x2) < 0 ? 0 : w - (W - x2));
+    }
+    /*Result*/
+    if (ans1 == OO)
+    {
+        cout << -1 nl;
+    }
+    else
+    {
+        cout << ans1 nl;
+    }
 }
 int main()
 {

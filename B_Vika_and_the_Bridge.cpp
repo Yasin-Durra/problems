@@ -13,7 +13,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,6 +33,7 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
@@ -42,17 +43,48 @@ using namespace std;
 const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
-
+pair<ll, ll> mx(pll p, ll v)
+{
+    if (v >= p.sc)
+    {
+        p.fr = p.sc;
+        p.sc = v;
+    }
+    else if (v >= p.fr)
+    {
+        p.fr = v;
+    }
+    R p;
+}
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    ll n, k;
+    cin >> n >> k;
+    ll a[n + 1], p[k + 1] = {0};
+    pair<ll, ll> res[k + 1];
+    for (int i = 1; i <= n; i++)
     {
-        swap(a, b);
+        cin >> a[i];
+        res[a[i]] = mx(res[a[i]], (i - p[a[i]]));
+        // dbg(a[i]);
+        // dbg((i - p[a[i]]));
+        p[a[i]] = i;
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    ll ans = OO;
+    for (int i = 1; i <= k; i++)
+    {
+
+        res[i] = mx(res[i], ((n + 1) - p[i]));
+        // dbg(i);
+        // dbg((n+1) - p[i]);
+        // dbg(res[i].sc);
+        // dbg(res[i].fr);
+        ans = min(ans, max(res[i].first, ((res[i].second + 1) / 2)));
+        // dbg(ans);
+    }
+
+    cout << ans - 1 nl;
+    // line
 }
 int main()
 {

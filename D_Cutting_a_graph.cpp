@@ -13,7 +13,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,6 +33,7 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
@@ -42,22 +43,88 @@ using namespace std;
 const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
+int p[N], r[N] = {0};
+ll siz[N] = {0};
+ll mn[N] = {N};
+ll mx[N] = {-1};
 
+int get(int x)
+{
+    R p[x] == x ? x : get(p[x]);
+}
+
+void uni(int a, int b)
+{
+    a = get(a);
+    b = get(b);
+    if (a != b)
+    {
+        if (siz[a] > siz[b])
+        {
+            swap(a, b);
+        }
+        p[a] = b;
+        siz[b] += siz[a];
+        mn[b] = min(mn[a], mn[b]);
+        mx[b] = max(mx[a], mx[b]);
+    }
+}
+void cut(int a, int b)
+{
+    int aa = get(a);
+    int bb = get(b);
+    if (aa == bb)
+    {
+        p[a] = a;
+        p[b] = b;
+        if (siz[a] > siz[b])
+        {
+            swap(a, b);
+        }
+        p[a] = b;
+        siz[b] += siz[a];
+    }
+}
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    ll n, m, k, u, v;
+    cin >> n >> m >> k;
+    for (int i = 1; i <= n; i++)
     {
-        swap(a, b);
+        p[i] = i;
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    while (m--)
+    {
+        cin >> u >> v;
+        uni(u, v);
+    }
+    while (k--)
+    {
+        string type;
+        cin >> type >> u >> v;
+        if (type == "ask")
+        {
+            u = get(u);
+            v = get(v);
+            if (u == v)
+            {
+                yes
+            }
+            else
+            {
+                no
+            }
+        }
+        else
+        {
+            cut(u, v);
+        }
+    }
 }
 int main()
 {
     SPEED;
-    Test
+    // Test
     solve();
     R 0;
 }

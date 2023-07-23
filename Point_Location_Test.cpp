@@ -13,7 +13,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,6 +33,7 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
@@ -45,14 +46,22 @@ int dy[] = {0, 0, 1, -1};
 
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    ll x1, x2, x3, y1, y2, y3;
+    cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+    ll cp = (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1);
+
+    if (cp == 0)
     {
-        swap(a, b);
+        cout << "TOUCH\n";
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    if (cp < 0)
+    {
+        cout << "RIGHT\n";
+    }
+    if (cp > 0)
+    {
+        cout << "LEFT\n";
+    }
 }
 int main()
 {

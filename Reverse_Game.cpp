@@ -13,7 +13,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,9 +33,11 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
+#define btwn(v, a, b) (v <= b && v >= a)
 #define fixTo(x, y) cout << fixed << setprecision(y) << x
 
 using namespace std;
@@ -45,14 +47,9 @@ int dy[] = {0, 0, 1, -1};
 
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
-    {
-        swap(a, b);
-    }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    int n, p;
+    cin >> n >> p;
+    cout<<n-p<<endl;
 }
 int main()
 {

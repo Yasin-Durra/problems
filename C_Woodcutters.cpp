@@ -13,7 +13,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,31 +33,68 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
+#define btwn(v, a, b) (v <= b && v >= a)
 #define fixTo(x, y) cout << fixed << setprecision(y) << x
 
 using namespace std;
 const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
+int dxx[] = {1, -1, 0, 0, -1, 1, -1, 1};
+int dyy[] = {0, 0, 1, -1, -1, 1, 1, -1};
+struct node
+{
+    ll x, y;
+};
 
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    ll n, x, y;
+    cin >> n;
+    ll lx, ly, ans = 1 + (n > 1);
+    node a[n];
+    for (int i = 0; i < n; i++)
     {
-        swap(a, b);
+        cin >> x >> y;
+        a[i] = {x, y};
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    lx = a[0].x;
+    ly = a[0].y;
+    bool b = 1;
+    for (int i = 1; i < n; i++)
+    {
+        x = a[i].x;
+        y = a[i].y;
+        if (!b && lx + ly < x)
+        {
+            ans++;
+            if (x - y > lx + ly)
+            {
+                ans++;
+                b ^= 1;
+            }
+        }
+        else if (x - y > lx && i < n - 1)
+        {
+            ans++;
+            b = 1;
+        }
+        else
+        {
+            b = 0;
+        }
+        lx = x, ly = y;
+    }
+    cout << ans << endl;
 }
 int main()
 {
     SPEED;
-    Test
+    // Test
     solve();
     R 0;
 }

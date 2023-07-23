@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #define ll long long
+#define int long long
 #define ull unsigned long long
 #define pb push_back
 #define mpa make_pair
@@ -13,7 +14,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,31 +34,76 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
+#define btwn(v, a, b) (v <= b && v >= a)
 #define fixTo(x, y) cout << fixed << setprecision(y) << x
 
 using namespace std;
 const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
-
+int mul(int x, int y)
+{
+    return (ll)x * y % Mod;
+}
+int sum(int x, int y)
+{
+    if ((x += y) >= Mod)
+        x -= Mod;
+    return x;
+}
+int sub(int x, int y)
+{
+    if ((x -= y) < 0)
+        x += Mod;
+    return x;
+}
+int po(int x, int y)
+{
+    if (!y)
+        return 1;
+    if (y & 1)
+        return mul(x, po(x, y - 1));
+    int z = po(x, y / 2);
+    return mul(z, z);
+}
+int inv(int x)
+{
+    return po(x, Mod - 2);
+}
+ll gcd(int x, int y)
+{
+    if (y == 0)
+        R x;
+        gcd(y,x%y);
+}
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    ll n, x;
+    ll s = 0, sm = 0;
+    cin >> n >> x;
+    ll a[n];
+    for (int i = 0; i < n; i++)
     {
-        swap(a, b);
+        cin >> a[i];
+        sm = sum(sm, a[i]);
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    for (int i = 0; i < n; i++)
+    {
+        s = sum(s, po(x, sm - a[i]));
+    }
+    dbg(s);
+    // dbg(sm);
+    dbg(po(x, sm));
+    cout << gcd(s, po(x, sm)) << endl;
 }
-int main()
+int32_t main()
 {
     SPEED;
-    Test
+    // Test
     solve();
     R 0;
 }

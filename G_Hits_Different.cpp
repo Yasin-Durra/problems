@@ -13,7 +13,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,6 +33,7 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
@@ -42,17 +43,24 @@ using namespace std;
 const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
-
+ll calc(ll n)
+{
+    if (n == 1)
+        R 1;
+    if (n == 2)
+        R 4;
+    if (n == 3)
+        R 9;
+    if (n < 1)
+        R 0;
+    R ((n * n) + calc((n + 1) / 2) + calc(((n + 1) / 2) + 1));
+}
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
-    {
-        swap(a, b);
-    }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    ll n;
+    cin >> n;
+    // dbg(n);
+    cout << calc(n) nl;
 }
 int main()
 {

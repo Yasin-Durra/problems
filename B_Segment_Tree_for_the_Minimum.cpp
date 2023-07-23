@@ -13,7 +13,7 @@
     cin.tie(0);              \
     cout.tie(0)
 #define sz size()
-#define deb(a) cout << #a << ':' << ' ' << a << '\n'
+#define dbg(a) cout << #a << ':' << ' ' << a << '\n'
 #define dbga(a)           \
     for (auto x : a)      \
         cout << x << ' '; \
@@ -33,6 +33,7 @@
     for (int T = 1; T <= TT; T++)
 #define unq(vec) vec.resize(distance(vec.begin(), unique(all(vec))));
 #define line cout << "______________________" << endl;
+#define nl << "\n"
 #define yes cout << "YES" << endl;
 #define no cout << "NO" << endl;
 #define clr(m, val) memset(m, val, sizeof m)
@@ -42,22 +43,62 @@ using namespace std;
 const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
 int dx[] = {1, -1, 0, 0};
 int dy[] = {0, 0, 1, -1};
-
+vector<ll> tree;
+ll get(int node, int ql, int qh, int tl, int th)
+{
+    if (tl > qh || th < ql)
+    {
+        R MM;
+    }
+    if (tl >= ql && th <= qh)
+    {
+        R tree[node];
+    }
+    int mid = (tl + th) / 2;
+    R min(get(node * 2, ql, qh, tl, mid) , get((node * 2) + 1, ql, qh, mid + 1, th));
+}
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    int n, m, u, v, t;
+    cin >> n >> m;
+    int siz = (ceil(log2(n)));
+    int ss = (1 << siz);
+    tree.resize(2 * ss,MM);
+    // dbg(n);
+    for (int i = 0; i < n; i++)
     {
-        swap(a, b);
+        cin >> tree[ss + i];
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    for (int i = ss - 1; i > 0; i--)
+    {
+        tree[i] = min(tree[2 * i] , tree[2 * i + 1]);
+    }
+    // dbga(tree);
+    while (m--)
+    {
+        cin >> t >> u >> v;
+        if (t == 1)
+        {
+            int i = ss + u;
+            tree[i] = v;
+            i/=2;
+            while (i)
+            {
+                tree[i] =  min(tree[2 * i] , tree[2 * i + 1]);
+                i/=2;
+            }
+        }
+        else
+        {
+            u++;
+            cout << get(1, u, v, 1, ss) nl;
+        }
+    }
 }
 int main()
 {
     SPEED;
-    Test
+    // Test
     solve();
     R 0;
 }

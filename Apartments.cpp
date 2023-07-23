@@ -18,14 +18,9 @@
     for (auto x : a)      \
         cout << x << ' '; \
     cout << endl;
-#define forin(i, n, a)          \
-    for (int j = i; j < n; j++) \
-        cin >> a[j];
 #define all(x) x.begin(), x.end()
 #define OO 1e18
 #define PI 3.14159265358979323846
-#define MM 1000000007
-#define FO(name) freopen(name, "r", stdin);
 #define R return
 #define Test   \
     int TT;    \
@@ -39,25 +34,51 @@
 #define fixTo(x, y) cout << fixed << setprecision(y) << x
 
 using namespace std;
-const ll N = 500010, M = 500, Mod = 1e9 + 7, K = 21, SQ = 316, T = 1440;
-int dx[] = {1, -1, 0, 0};
-int dy[] = {0, 0, 1, -1};
-
+const ll N = 500010, M = 2100, Mod = 998244353;
 void solve()
 {
-    ll a, b;
-    cin >> a >> b;
-    if (a < b)
+    int n, m;
+    cin >> n >> m;
+    ll a[n], b[m], k;
+    cin >> k;
+    for (int i = 0; i < n; i++)
     {
-        swap(a, b);
+        cin >> a[i];
     }
-    if (a > 2 * b || ((a + b) % 3))
-        no else yes
+    for (int i = 0; i < m; i++)
+    {
+        cin >> b[i];
+    }
+    sort(a, a + n);
+    sort(b, b + m);
+    int l = 0, r = 0, ans = 0;
+    while (l < n && r < m)
+    {
+        // deb(a[l]);
+        // deb(b[r]);
+        if (a[l] <= (b[r] + k) && a[l] >= (b[r] - k))
+        {
+            // cout<<"fssf\n";
+            ans++;
+            l++;
+            r++;
+        }
+        else if (a[l] < (b[r] + k))
+        {
+            l++;
+        }
+        else if (a[l] > (b[r] - k))
+        {
+            r++;
+        }
+    }
+    cout<<ans<<'\n';
+    // dbga(a);
+    // dbga(b);
 }
 int main()
 {
     SPEED;
-    Test
     solve();
     R 0;
 }
