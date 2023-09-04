@@ -61,14 +61,28 @@ void ans(ll n, bool b)
     }
 
     ans(n - 1, 1 ^ b);
-    if(b){}
+    if (b)
+    {
+    }
+}
+void Hanoi(ll N, ll From, ll To_, ll Temp)
+{
+    if (N > 0)
+    {
+
+        Hanoi(N - 1, From, Temp, To_);
+        // Writeln(N, From, To_);
+        cout << From <<" " << To_ << endl;
+        Hanoi(N - 1, Temp, To_, From);
+    }
 }
 void solve()
 {
     ll n;
     cin >> n;
     cout << powl(2, n) - 1 << endl;
-    ans(n, n % 2);
+    Hanoi(n,1,3,2);
+    // ans(n, n % 2);
 }
 int main()
 {

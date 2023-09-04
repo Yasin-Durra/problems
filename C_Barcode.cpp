@@ -47,11 +47,63 @@ int dy[] = {0, 0, 1, -1};
 int dxx[] = {1, -1, 0, 0, -1, 1, -1, 1};
 int dyy[] = {0, 0, 1, -1, -1, 1, 1, -1};
 
+ll n, m, x, y;
+ll a[T] = {0};
+ll dp[T][T][3];
+ll cost(ll i, ll pr)
+{
+    // pr^=1;
+    R((a[i] * pr) + ((n - a[i]) * !pr));
+}
+ll ans(ll i, ll w, ll pr)
+{
+    if (i == m)
+    {
+        if (w > y || w < x)
+        {
+            R OO;
+        }
+        R 0;
+    }
+    // dbg(w);
+    if (dp[i][w][pr] != -1)
+    {
+        R dp[i][w][pr];
+    }
+    ll d = OO;
+    if (i == 0 || (pr == 0 && w + 1 <= y) || (pr == 1 && w >= x))
+    {
+        d = n - a[i] + ans(i + 1, (pr == 0) ? w + 1 : 1, 0);
+    }
+    ll h = OO;
+    if (i == 0 || (pr == 1 && w + 1 <= y) || (pr == 0 && w >= x))
+    {
+        h =a[i] + ans(i + 1, (pr == 1) ? w + 1 : 1, 1);
+    }
+    R dp[i][w][pr]=min(h,d);
+    // if (w < x)
+    // {
+    //     R dp[i][w][pr] = ans(i + 1, w + 1, pr) + cost(i, pr);
+    // }
+    // else if (w >= y)
+    // {
+    //     // no
+    //     R dp[i][w][pr] == ans(i + 1, 1, !pr) + cost(i, !pr);
+    // }
+    // else if (w + 1 <= y && w >= x)
+    // {
+    //     // yes
+    //     R dp[i][w][pr] = min(ans(i + 1, w + 1, pr) + cost(i, pr),
+    //                          ans(i + 1, 1, !pr) + cost(i, !pr));
+    // }
+    // else
+    // {
+    //     no;
+    // }
+}
 void solve()
 {
-    ll n, m, x, y;
     cin >> n >> m >> x >> y;
-    ll a[m] = {0};
     char c;
     for (int i = 0; i < n; i++)
     {
@@ -62,7 +114,14 @@ void solve()
                 a[j]++;
         }
     }
-    ll dp[m] = {0};
+    // for (int i = 1; i <= m; i++)
+    // {
+    //     dbg(cost(i,0));
+    //     dbg(cost(i,1));
+    // }
+    clr(dp, -1);
+
+    cout << ans(0, 0, 2);
 }
 int main()
 {

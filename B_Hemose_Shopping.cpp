@@ -46,18 +46,31 @@ int dy[] = {0, 0, 1, -1};
 void solve()
 {
     ll n, x;
-    cin >> n>>x;
+    cin >> n >> x;
     ll a[n + 1];
-    forin(0,n,a);
-    cout<<a<<"\n";
-    
-    if(n<=x){
-        no
-    }else
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> a[i];
+    }
+    if (n >= 2 * x)
     {
         yes
+            R;
     }
-    
+    bool ok = 1;
+    ll l = min(x, n - x + 1);
+    ll r = max(x, n - x + 1);
+    for (int i = l; i < r; i++)
+    {
+        if (a[i] > a[i + 1])
+        {
+            ok = 0;
+            no;
+            R;
+        }
+    }
+
+    yes;
 }
 int main()
 {
